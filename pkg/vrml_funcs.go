@@ -2,7 +2,6 @@ package vrml
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/clairmont32/httplib"
 	"github.com/sirupsen/logrus"
 )
@@ -40,7 +39,6 @@ func GetDonations(h []httplib.Headers) (donors *Donations, err error) {
 	// []headers are added into the request through DefaultRequest
 	resp, err := httplib.DefaultRequest(req, h)
 
-	fmt.Println(string(resp))
 	// unmarshal into sponsors and return
 	err = json.Unmarshal(resp, &donors)
 	if err != nil {
