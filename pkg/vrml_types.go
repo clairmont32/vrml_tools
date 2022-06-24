@@ -6,22 +6,26 @@ import (
 
 // Donations contains recent and alltime stats
 type Donations struct {
-	Recent  []DonationData
-	Alltime []DonorsAlltime
+	Recent  DonationData
+	Alltime DonorsAlltime
 }
 
 type DonationData struct {
-	CreatedAt  time.Time `json:"created_at"`
-	Currency   string    `json:"currency"`
-	Amount     string    `json:"amount"`
-	AmountText string    `json:"amount_text"`
-	Name       string    `json:"name"`
-	Message    string    `json:"message"`
+	Data []struct {
+		CreatedAt  string `json:"created_at"`
+		Currency   string `json:"currency"`
+		Amount     string `json:"amount"`
+		AmountText string `json:"amount_text"`
+		Name       string `json:"name"`
+		Message    string `json:"message"`
+	}
 }
 
 type DonorsAlltime struct {
-	Name string `json:"name"`
-	Rank string `json:"rank"`
+	Donors []struct {
+		Name string `json:"name"`
+		Rank int    `json:"rank"`
+	} `json:"donors"`
 }
 
 // Sponsors holds the response fields for performing a GET against /Sponsors
